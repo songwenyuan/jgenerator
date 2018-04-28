@@ -50,6 +50,8 @@ public class PropUtil {
             Config.PACKAGE_ISERVICE_NAME = props.getProperty("PACKAGE_ISERVICE_NAME");
             Config.PACKAGE_ISERVICE_PATH = props.getProperty("PACKAGE_ISERVICE_PATH");
             Config.PACKAGE_MAPPER_PATH = props.getProperty("PACKAGE_MAPPER_PATH");
+            Config.PACKAGE_CONTROLLER_NAME = props.getProperty("PACKAGE_CONTROLLER_NAME");
+            Config.PACKAGE_CONTROLLER_PATH = props.getProperty("PACKAGE_CONTROLLER_PATH");
             Config.TRIM_STRINGS = Boolean.parseBoolean(props.getProperty("TRIM_STRINGS"));
 
         } catch (Exception e) {

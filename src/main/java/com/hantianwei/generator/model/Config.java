@@ -20,6 +20,8 @@ public class Config {
     public static String PACKAGE_ISERVICE_NAME = "";
     public static String PACKAGE_ISERVICE_PATH = "";
     public static String PACKAGE_MAPPER_PATH = "";
+    public static String PACKAGE_CONTROLLER_NAME = "";
+    public static String PACKAGE_CONTROLLER_PATH = "";
     public static boolean TRIM_STRINGS = false;
 
     public static String CONFIG_LOCAL_PATH ="config.properties";

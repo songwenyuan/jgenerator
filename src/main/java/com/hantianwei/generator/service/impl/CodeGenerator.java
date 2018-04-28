@@ -38,11 +38,12 @@ public class CodeGenerator implements ICodeGenerator {
             List<Field> fieldList = dataDao.getAllColums(Config.DB_NAME, table.getName());
             String tableName = StringUtil.toUpperCaseFirstOne(table.getProName());
             //这里可改为枚举控制
-            generateFile("ModelTemplate.ftl", table, fieldList, Config.PACKAGE_MODEL_PATH, String.format("%s.java", tableName));
+            //generateFile("ModelTemplate.ftl", table, fieldList, Config.PACKAGE_MODEL_PATH, String.format("%s.java", tableName));
             generateFile("DaoTemplate.ftl", table, fieldList, Config.PACKAGE_DAO_PATH, String.format("%s%s.java", tableName, StringUtil.toUpperCaseFirstOne(Config.PACKAGE_DAO_NAME)));
-            generateFile("ServiceTemplate.ftl", table, fieldList, Config.PACKAGE_SERVICE_PATH, String.format("%s%s.java", tableName,StringUtil.toUpperCaseFirstOne(Config.PACKAGE_SERVICE_NAME)));
-            generateFile("IServiceTemplate.ftl", table, fieldList, Config.PACKAGE_ISERVICE_PATH, String.format("I%s%s.java", tableName,StringUtil.toUpperCaseFirstOne(Config.PACKAGE_SERVICE_NAME)));
-            generateFile("MapperTemplate.ftl", table, fieldList, Config.PACKAGE_MAPPER_PATH, String.format("%sMapper.xml", tableName));
+            generateFile("ServiceTemplate.ftl", table, fieldList, Config.PACKAGE_SERVICE_PATH, String.format("%sServiceImpl.java", tableName,StringUtil.toUpperCaseFirstOne(Config.PACKAGE_SERVICE_NAME)));
+            generateFile("IServiceTemplate.ftl", table, fieldList, Config.PACKAGE_ISERVICE_PATH, String.format("%sService.java", tableName,StringUtil.toUpperCaseFirstOne(Config.PACKAGE_SERVICE_NAME)));
+            generateFile("MapperTemplate.ftl", table, fieldList, Config.PACKAGE_MAPPER_PATH, String.format("%sDao.xml", tableName));
+            generateFile("ControllerTemplate.ftl", table, fieldList, Config.PACKAGE_CONTROLLER_PATH, String.format("%sAction.java", tableName));
             long endTime = System.currentTimeMillis();
             System.out.println(String.format("[%s]表生成完毕,用时[%d]ms", tableName, endTime - startTime));
         }

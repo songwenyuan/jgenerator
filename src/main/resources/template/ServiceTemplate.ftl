@@ -1,4 +1,14 @@
-package ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_SERVICE_NAME}.impl;
+package ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_SERVICE_NAME};
+
+import com.longmaosoft.data.dao.tags.${tableProName?cap_first}Dao;
+import com.longmaosoft.lib.utils.entity.SimpleMap;
+import org.springframework.stereotype.Service;
+import com.longmaosoft.lib.web.entity.GridPage;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+
+import javax.annotation.Resource;
+import java.util.List;
 
 /**
 * -------------------------------------------------------------------------------
@@ -15,39 +25,39 @@ package ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_SERVICE_NAME}.impl;
 * -------------------------------------------------------------------------------
 */
 
-import ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_MODEL_NAME}.${tableProName?cap_first};
-import ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_DAO_NAME}.${tableProName?cap_first}Dao;
-import ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_ISERVICE_NAME}.I${tableProName?cap_first}Service;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
-import javax.annotation.Resource;
-
-import java.util.List;
-
 @Service
-@Transactional(rollbackFor = Exception.class)
-public class ${tableProName?cap_first}Service implements I${tableProName?cap_first}Service {
+public class ${tableProName?cap_first}ServiceImpl implements ${tableProName?cap_first}Service {
 
 	@Resource
 	private ${tableProName?cap_first}Dao ${tableProName}Dao;
 
-	public ${tableProName?cap_first} add(${tableProName?cap_first} ${tableProName}){
-		${fieldPk.type} ${fieldPk.proName} = ${tableProName}Dao.add(${tableProName});
-		${tableProName}.set${fieldPk.proName?cap_first}(${fieldPk.proName});
-		return ${tableProName};
-	}
+    public SimpleMap get${tableProName?cap_first}ById(long id) {
+        return ${tableProName}Dao.get${tableProName?cap_first}ById(id);
+    }
 
-	public void update(${tableProName?cap_first} ${tableProName}){
-		${tableProName}Dao.update(${tableProName});
-	}
+    public SimpleMap create${tableProName?cap_first}(SimpleMap map) {
+		${tableProName}Dao.create${tableProName?cap_first}(map);
+        return map;
+    }
 
-	public void remove(${fieldPk.type} ${fieldPk.proName}){
-		${tableProName}Dao.remove(${fieldPk.proName});
-	}
+    public boolean update${tableProName?cap_first}ById(SimpleMap map) {
+        return ${tableProName}Dao.update${tableProName?cap_first}ById(map)>0;
+    }
 
-	public User getBy${fieldPk.proName?cap_first}(${fieldPk.type} ${fieldPk.proName}){
-		return ${tableProName}Dao.getBy${fieldPk.proName?cap_first}(${fieldPk.proName});
-	}
+    public boolean delete${tableProName?cap_first}ById(long id) {
+        return ${tableProName}Dao.delete${tableProName?cap_first}ById(id);
+    }
+
+    public GridPage query${tableProName?cap_first}PageList(SimpleMap params) {
+        GridPage result = new GridPage();
+        Page page = PageHelper.startPage(params.getInteger("page"), params.getInteger("pagesize"), true);
+        result.setRows(${tableProName}Dao.query${tableProName?cap_first}List(params));
+        result.setTotal(page.getTotal());
+        return result;
+    }
+
+	public List<SimpleMap> query${tableProName?cap_first}List(SimpleMap params) {
+    	return ${tableProName}Dao.query${tableProName?cap_first}List(params);
+    }
 
 }

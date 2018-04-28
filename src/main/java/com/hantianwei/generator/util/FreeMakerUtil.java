@@ -43,8 +43,9 @@ public class FreeMakerUtil {
 
         Writer out = null;
         try {
-            outFilePath = FileUtil.getCurrentDirParent() + outFilePath;
+            //outFilePath = FileUtil.getCurrentDirParent() + outFilePath;
             FileUtil.createDirectory(new File(outFilePath).getParent());
+            System.out.println(outFilePath);
             // 通过一个文件输出流，就可以写到相应的文件中，此处用的是绝对路径
             out = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(outFilePath)), "UTF-8"));
             Template temp = this.getTemplate(templateName);

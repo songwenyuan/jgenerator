@@ -1,4 +1,8 @@
 package ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_ISERVICE_NAME};
+import com.longmaosoft.lib.utils.entity.SimpleMap;
+import com.longmaosoft.lib.web.entity.GridPage;
+
+import java.util.List;
 
 /**
 * -------------------------------------------------------------------------------
@@ -15,20 +19,51 @@ package ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_ISERVICE_NAME};
 * -------------------------------------------------------------------------------
 */
 
-import ${config.PACKAGE_ROOT_NAME}.${config.PACKAGE_MODEL_NAME}.${tableProName?cap_first};
-import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
-@Repository
-public interface I${tableProName?cap_first}${config.PACKAGE_SERVICE_NAME?cap_first} {
+public interface ${tableProName?cap_first}Service {
 
-    ${tableProName?cap_first} add(${tableProName?cap_first} ${tableProName});
+    /**
+     * 获取一条${tableName}表信息
+     * @param id
+     * @return
+     */
+    SimpleMap get${tableProName?cap_first}ById(long id);
 
-    void update(${tableProName?cap_first} ${tableProName});
+    /**
+     * 新增一条${tableName}表信息
+     * @param map
+     * @return
+     */
+    SimpleMap create${tableProName?cap_first}(SimpleMap map);
 
-    void remove(${fieldPk.type} ${fieldPk.proName});
+    /**
+     * 通过ID更新一条${tableName}表信息
+     * @param map
+     * @return
+     */
+    boolean update${tableProName?cap_first}ById(SimpleMap map);
 
-    ${tableProName?cap_first} getBy${fieldPk.proName?cap_first}(${fieldPk.type} ${fieldPk.proName});
+    /**
+     * 通过ID删除一条${tableName}表信息
+     * @param id
+     * @return
+     */
+    boolean delete${tableProName?cap_first}ById(long id);
+
+    /**
+     * ${tableName}表列表页查询（带分页）
+     * @param params
+     * @return
+     */
+    GridPage query${tableProName?cap_first}PageList(SimpleMap params);
+
+    /**
+     * ${tableName}表查询（不带翻页）
+     *
+     * @param params
+     * @return
+     */
+    List<SimpleMap> query${tableProName?cap_first}List(SimpleMap params);
 
 }
