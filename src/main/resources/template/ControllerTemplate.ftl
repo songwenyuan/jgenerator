@@ -38,7 +38,8 @@ public class ${tableProName?cap_first}Action {
 
     @RequestMapping(value = "create", method = RequestMethod.POST)
     public Message create${tableProName?cap_first}(@RequestBody SimpleMap map) {
-        return new Message(Message.STATUS_OK).setResult(${tableProName}Service.create${tableProName?cap_first}(map));
+        ${tableProName}Service.create${tableProName?cap_first}(map);
+        return new Message(Message.STATUS_OK).setResult(map.getLong("id"));
     }
 
     @RequestMapping(value = "update", method = RequestMethod.POST)

@@ -35,7 +35,7 @@ public interface ${tableProName?cap_first}Service {
      * @param map
      * @return
      */
-    SimpleMap create${tableProName?cap_first}(SimpleMap map);
+    void create${tableProName?cap_first}(SimpleMap map);
 
     /**
      * 通过ID更新一条${tableName}表信息

@@ -35,9 +35,8 @@ public class ${tableProName?cap_first}ServiceImpl implements ${tableProName?cap_
         return ${tableProName}Dao.get${tableProName?cap_first}ById(id);
     }
 
-    public SimpleMap create${tableProName?cap_first}(SimpleMap map) {
+    public void create${tableProName?cap_first}(SimpleMap map) {
 		${tableProName}Dao.create${tableProName?cap_first}(map);
-        return map;
     }
 
     public boolean update${tableProName?cap_first}ById(SimpleMap map) {
