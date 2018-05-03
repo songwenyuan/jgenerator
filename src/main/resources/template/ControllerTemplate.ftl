@@ -52,7 +52,7 @@ public class ${tableProName?cap_first}Action {
         return new Message(Message.STATUS_OK).setResult(${tableProName}Service.delete${tableProName?cap_first}ById(id));
     }
 
-    @RequestMapping(value = "query_page", method = RequestMethod.POST)
+    @RequestMapping(value = "query_page", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
     public Message query${tableProName?cap_first}PageList(@RequestBody SimpleMap params) {
         return new Message(Message.STATUS_OK).setResult(${tableProName}Service.query${tableProName?cap_first}PageList(params));
     }

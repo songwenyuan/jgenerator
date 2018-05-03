@@ -49,7 +49,7 @@ public class ${tableProName?cap_first}ServiceImpl implements ${tableProName?cap_
 
     public GridPage query${tableProName?cap_first}PageList(SimpleMap params) {
         GridPage result = new GridPage();
-        Page page = PageHelper.startPage(params.getInteger("page"), params.getInteger("pagesize"), true);
+        Page page = PageHelper.startPage(params.getInteger("page"), params.getInteger("rows"), true);
         result.setRows(${tableProName}Dao.query${tableProName?cap_first}List(params));
         result.setTotal(page.getTotal());
         return result;
