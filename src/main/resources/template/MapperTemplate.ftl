@@ -23,7 +23,7 @@
     <update id="update${tableProName?cap_first}ById" parameterType="bean">
         UPDATE
     `${tableName}`
-        SET
+        <trim prefix="set" suffixOverrides=",">
         <#list fieldList as pro>
             <#if pro.isIdentity==0>
             <${r''}if test="${pro.proName} != null">
@@ -31,6 +31,7 @@
             </${r''}if>
             </#if>
         </#list>
+        </trim>
         WHERE id = ${r'#'}{id}
     </update>
 

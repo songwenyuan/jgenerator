@@ -33,7 +33,7 @@ public interface ${tableProName?cap_first}Dao {
      * @param map
      * @return
      */
-    void create${tableProName?cap_first}(SimpleMap map);
+    Integer create${tableProName?cap_first}(SimpleMap map);
 
     /**
      * 通过ID更新一条${tableDescription?cap_first}
